@@ -37,7 +37,7 @@ function showEmps(data) {
                 <img class="card-img" src="${emp.picture.large}" alt="profile picture">
             </div>
             <div class="card-info-container">
-                <h3 id="name" class="card-name cap">${emp.name.first}</h3>
+                <h3 id="name" class="card-name cap">${emp.name.first} ${emp.name.last}</h3>
                 <p class="card-text">${emp.email}</p>
                 <p class="card-text cap">${emp.location.city}</p>
             </div>
@@ -56,12 +56,12 @@ function showEmps(data) {
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="modal-info-container">
                     <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
-                    <h3 id="name" class="modal-name cap">${emp.name.first}</h3>
+                    <h3 id="name" class="modal-name cap">${emp.name.first} ${emp.name.last}</h3>
                     <p class="modal-text">${emp.email}</p>
                     <p class="modal-text cap">${emp.location.city}</p>
                     <hr>
                     <p class="modal-text">${emp.phone}</p>
-                    <p class="modal-text">${emp.location.street}, ${emp.location.state}, ${emp.location.postcode}</p>
+                    <p class="modal-text cap">${emp.location.street}, ${emp.location.state}, ${emp.location.postcode}</p>
                     <p class="modal-text">Birthday: ${showBirthday(emp.dob.date)}</p>
                 </div>
             </div>
