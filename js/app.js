@@ -38,7 +38,7 @@ function showEmps(data) {
             <div class="card-info-container">
                 <h3 id="name" class="card-name cap">${emp.name.first}</h3>
                 <p class="card-text">${emp.email}</p>
-                <p class="card-text cap">${emp.location.city}, ${emp.location.state}</p>
+                <p class="card-text cap">${emp.location.city}</p>
             </div>
         `;
 
