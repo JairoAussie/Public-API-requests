@@ -1,6 +1,7 @@
 //variable of the url to get the 12 random employees
 const url = "https://randomuser.me/api/?results=12";
 const gallery = document.getElementById('gallery');
+const modals = [];
 
 //asynchronous functions to get the JSON document from the url
 async function getJSON(url) {
@@ -43,6 +44,37 @@ function showEmps(data) {
         `;
 
         card.innerHTML = empHTML;
-        gallery.appendChild(card);            
-    });    
+        gallery.appendChild(card);   
+        
+        //Create modal window objects of employee
+        const modal = document.createElement('div');
+        modal.className = 'modal-container';
+
+        //Create the modal window in HTML
+        const modalHTML = `
+            <div class="modal">
+                <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+                <div class="modal-info-container">
+                    <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
+                    <h3 id="name" class="modal-name cap">${emp.name.first}</h3>
+                    <p class="modal-text">${emp.email}</p>
+                    <p class="modal-text cap">${emp.location.city}, ${emp.location.state}</p>
+                    <hr>
+                    <p class="modal-text">${emp.phone}</p>
+                    <p class="modal-text">${emp.location.street}, ${emp.location.state}, ${emp.location.postcode}</p>
+                    <p class="modal-text">Birthday: ${emp.dob.date}</p>
+                </div>
+            </div>
+
+        `;
+
+        modal.innerHTML = modalHTML;
+        //add the modal to the array
+        modals.push(modal);
+
+        //shows the modal when the card is clicked
+        card.addEventListener('click', () => {
+            gallery.appendChild(modals[index]);       
+        });
+    });   
 }
