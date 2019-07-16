@@ -58,11 +58,11 @@ function showEmps(data) {
                     <img class="modal-img" src="${emp.picture.large}" alt="profile picture">
                     <h3 id="name" class="modal-name cap">${emp.name.first}</h3>
                     <p class="modal-text">${emp.email}</p>
-                    <p class="modal-text cap">${emp.location.city}, ${emp.location.state}</p>
+                    <p class="modal-text cap">${emp.location.city}</p>
                     <hr>
                     <p class="modal-text">${emp.phone}</p>
                     <p class="modal-text">${emp.location.street}, ${emp.location.state}, ${emp.location.postcode}</p>
-                    <p class="modal-text">Birthday: ${emp.dob.date}</p>
+                    <p class="modal-text">Birthday: ${showBirthday(emp.dob.date)}</p>
                 </div>
             </div>
 
@@ -74,7 +74,23 @@ function showEmps(data) {
 
         //shows the modal when the card is clicked
         card.addEventListener('click', () => {
-            gallery.appendChild(modals[index]);       
+            gallery.appendChild(modals[index]);  
+            closeModal(index)
         });
     });   
+}
+
+//gives the proper format to the birthday
+function showBirthday(text) { 
+    const regex = /(\d{2})(\d{2})-(\d{2})-(\d{2}).*/;
+    return text.replace(regex, '$3/$4/$2');
+}
+
+function closeModal(index) {
+    const closeBtn = document.getElementById('modal-close-btn');
+    const modal = document.querySelector('.modal-container');
+
+    closeBtn.addEventListener('click', () => {
+       modal.remove();
+    });
 }
