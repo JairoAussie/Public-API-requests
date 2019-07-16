@@ -85,7 +85,7 @@ function showBirthday(text) {
     const regex = /(\d{2})(\d{2})-(\d{2})-(\d{2}).*/;
     return text.replace(regex, '$3/$4/$2');
 }
-
+//click in the close button so you can close the modal window
 function closeModal(index) {
     const closeBtn = document.getElementById('modal-close-btn');
     const modal = document.querySelector('.modal-container');
